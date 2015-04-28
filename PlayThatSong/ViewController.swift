@@ -145,5 +145,24 @@ class ViewController: UIViewController {
         self.currentSongIndex = self.currentSongIndex + 1
     }
     
+    //Mark: - UIUpdate Helpers
+    
+    func currentSongName () -> String {
+        var currentSong: String
+        
+        if currentSongIndex == 0 {
+            currentSong = "Destiny"
+        } else if currentSongIndex == 1 {
+            currentSong = "Nube"
+        } else if currentSongIndex == 2 {
+            currentSong = "Weeping Willow"
+        } else {
+            currentSong = "No song playing"
+            println("Something went wrong!")
+        }
+        
+        return currentSong
+    }
+    
 }
 
