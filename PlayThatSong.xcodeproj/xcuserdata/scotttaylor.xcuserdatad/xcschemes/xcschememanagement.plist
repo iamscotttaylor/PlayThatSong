@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Notification - PlayThatSong WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>PlayThatSong WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>PlayThatSong.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>BA5C92281AF0265100AEBA91</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BA5C92491AF0266600AEBA91</key>
 		<dict>
 			<key>primary</key>
 			<true/>
