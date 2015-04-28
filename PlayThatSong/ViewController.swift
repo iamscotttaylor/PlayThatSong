@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var audioSession: AVAudioSession!
 //    var audioPlayer: AVAudioPlayer!
     var audioQueuePlayer: AVQueuePlayer!
+    var currentSongIndex:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +38,24 @@ class ViewController: UIViewController {
         
     }
     @IBAction func playPreviousButtonPressed(sender: UIButton) {
-        
+        if currentSongIndex > 0 {
+            self.audioQueuePlayer.pause()
+            self.audioQueuePlayer.seekToTime(kCMTimeZero, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+            let temporaryNowPlayIndex = currentSongIndex
+            let temporaryPlayList = self.createSongs()
+            self.audioQueuePlayer.removeAllItems()
+            for var index = temporaryNowPlayIndex - 1; index < temporaryPlayList.count; index++ {
+                self.audioQueuePlayer.insertItem(temporaryPlayList[index] as! AVPlayerItem, afterItem: nil)
+            }
+            self.currentSongIndex = temporaryNowPlayIndex - 1
+            self.audioQueuePlayer.seekToTime(kCMTimeZero, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
+            self.audioQueuePlayer.play()  
+        }
     }
     
     @IBAction func playNextButtonPressed(sender: UIButton) {
-        
         self.audioQueuePlayer.advanceToNextItem()
+        self.currentSongIndex = self.currentSongIndex + 1
         
     }
     
@@ -94,6 +107,7 @@ class ViewController: UIViewController {
 //        self.audioPlayer.prepareToPlay()
 //        self.audioPlayer.play()
         self.audioQueuePlayer.play()
+        self.currentSongIndex = 0
         
     }
 
@@ -114,6 +128,12 @@ class ViewController: UIViewController {
         let songs: [AnyObject] = [firstPlayItem, secondPlayItem, thirdPlayItem]
         
         return songs
+    }
+    
+    //Mark: - Audio Notification
+    
+    func songEnded (notification: NSNotification) {
+        self.currentSongIndex = self.currentSongIndex + 1
     }
     
 }
