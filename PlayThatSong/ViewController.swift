@@ -16,11 +16,13 @@ class ViewController: UIViewController {
     
     var audioSession: AVAudioSession!
 //    var audioPlayer: AVAudioPlayer!
+    var audioQueuePlayer: AVQueuePlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureAudioSession()
-        self.configureAudioPlayer()
+//        self.configureAudioPlayer()
+        self.configureAudioQueuePlayer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,6 +41,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playNextButtonPressed(sender: UIButton) {
+        
+        self.audioQueuePlayer.advanceToNextItem()
         
     }
     
@@ -73,10 +77,23 @@ class ViewController: UIViewController {
 //        
 //    }
     
+    
+    func configureAudioQueuePlayer () {
+        
+        let songs = createSongs()
+        self.audioQueuePlayer = AVQueuePlayer(items: songs)
+        
+        for var songIndex = 0; songIndex < songs.count; songIndex++ {
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "songEnded:", name: AVPlayerItemDidPlayToEndTimeNotification, object: songs[songIndex])
+        }
+        
+    }
+    
     func playMusic () {
         
 //        self.audioPlayer.prepareToPlay()
 //        self.audioPlayer.play()
+        self.audioQueuePlayer.play()
         
     }
 
