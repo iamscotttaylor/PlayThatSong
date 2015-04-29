@@ -10,24 +10,24 @@ import UIKit
 import AVFoundation
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var currentSongLabel: UILabel!
     
     var audioSession: AVAudioSession!
-//    var audioPlayer: AVAudioPlayer!
+    //    var audioPlayer: AVAudioPlayer!
     var audioQueuePlayer: AVQueuePlayer!
     var currentSongIndex:Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureAudioSession()
-//        self.configureAudioPlayer()
+        //        self.configureAudioPlayer()
         self.configureAudioQueuePlayer()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("handleRequest:"), name: "WatchKitDidMakeRequest", object: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,9 +52,9 @@ class ViewController: UIViewController {
             }
             self.currentSongIndex = temporaryNowPlayIndex - 1
             self.audioQueuePlayer.seekToTime(kCMTimeZero, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero)
-            self.audioQueuePlayer.play()  
+            self.audioQueuePlayer.play()
         }
-            self.updateUI()
+        self.updateUI()
     }
     
     @IBAction func playNextButtonPressed(sender: UIButton) {
@@ -81,19 +81,19 @@ class ViewController: UIViewController {
         }
     }
     
-//    func configureAudioPlayer (){
-//        
-//        var songPath = NSBundle.mainBundle().pathForResource("Destiny (Fresh Direct's Chillstep Re", ofType: "mp3")
-//        var songURL = NSURL.fileURLWithPath(songPath!)
-//        
-//        println("songURL: \(songURL)")
-//        
-//        var songError: NSError?
-//        self.audioPlayer = AVAudioPlayer(contentsOfURL: songURL, error: &songError)
-//        println("song error: \(songError)")
-//        self.audioPlayer.numberOfLoops = 0
-//        
-//    }
+    //    func configureAudioPlayer (){
+    //
+    //        var songPath = NSBundle.mainBundle().pathForResource("Destiny (Fresh Direct's Chillstep Re", ofType: "mp3")
+    //        var songURL = NSURL.fileURLWithPath(songPath!)
+    //
+    //        println("songURL: \(songURL)")
+    //
+    //        var songError: NSError?
+    //        self.audioPlayer = AVAudioPlayer(contentsOfURL: songURL, error: &songError)
+    //        println("song error: \(songError)")
+    //        self.audioPlayer.numberOfLoops = 0
+    //
+    //    }
     
     
     func configureAudioQueuePlayer () {
@@ -108,8 +108,8 @@ class ViewController: UIViewController {
     }
     
     func playMusic () {
-//        self.audioPlayer.prepareToPlay()
-//        self.audioPlayer.play()
+        //        self.audioPlayer.prepareToPlay()
+        //        self.audioPlayer.play()
         
         if audioQueuePlayer.rate > 0 && audioQueuePlayer.error == nil {
             self.audioQueuePlayer.pause()
@@ -121,10 +121,10 @@ class ViewController: UIViewController {
             self.audioQueuePlayer.play()
         }
         
-
+        
         
     }
-
+    
     func createSongs () -> [AnyObject] {
         
         let firstSongPath = NSBundle.mainBundle().pathForResource("Destiny (Fresh Direct's Chillstep Re", ofType: "mp3")
@@ -191,7 +191,19 @@ class ViewController: UIViewController {
             
             let requestedAction: String = watchKitInfo!.playerRequest!
             
-            self.playMusic()
+            switch requestedAction {
+            case "Play":
+                self.playMusic()
+            case "Next":
+                self.playNextButtonPressed(UIButton())
+            case "Previous":
+                self.playPreviousButtonPressed(UIButton())
+            default:
+                println("default value printed something wrong")
+                
+            }
+            
+            self.updateUI()
             
         }
         
