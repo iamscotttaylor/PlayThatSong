@@ -24,6 +24,7 @@
 		BA5C92641AF029A300AEBA91 /* Nhumo_En mi Nube.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5C92611AF029A300AEBA91 /* Nhumo_En mi Nube.mp3 */; };
 		BA5C92651AF029A300AEBA91 /* Nhumo_Weeping Willow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BA5C92621AF029A300AEBA91 /* Nhumo_Weeping Willow.mp3 */; };
 		BA5C92671AF029FB00AEBA91 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA5C92661AF029FB00AEBA91 /* AVFoundation.framework */; };
+		BA5C92691AF0453700AEBA91 /* WatchKitInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5C92681AF0453700AEBA91 /* WatchKitInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		BA5C92611AF029A300AEBA91 /* Nhumo_En mi Nube.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Nhumo_En mi Nube.mp3"; sourceTree = "<group>"; };
 		BA5C92621AF029A300AEBA91 /* Nhumo_Weeping Willow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Nhumo_Weeping Willow.mp3"; sourceTree = "<group>"; };
 		BA5C92661AF029FB00AEBA91 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BA5C92681AF0453700AEBA91 /* WatchKitInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchKitInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				BA5C92191AF0265100AEBA91 /* AppDelegate.swift */,
 				BA5C921B1AF0265100AEBA91 /* ViewController.swift */,
+				BA5C92681AF0453700AEBA91 /* WatchKitInfo.swift */,
 				BA5C921D1AF0265100AEBA91 /* Main.storyboard */,
 				BA5C92201AF0265100AEBA91 /* Images.xcassets */,
 				BA5C92221AF0265100AEBA91 /* LaunchScreen.xib */,
@@ -385,6 +388,7 @@
 			files = (
 				BA5C921C1AF0265100AEBA91 /* ViewController.swift in Sources */,
 				BA5C921A1AF0265100AEBA91 /* AppDelegate.swift in Sources */,
+				BA5C92691AF0453700AEBA91 /* WatchKitInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
