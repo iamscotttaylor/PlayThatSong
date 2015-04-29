@@ -39,6 +39,9 @@ class InterfaceController: WKInterfaceController {
         
         WKInterfaceController.openParentApplication(info, reply: { (reply, error) -> Void in
             println("reply \(reply) error \(error)")
+            if reply != nil {
+                self.updateLabel(reply as! [String : String])
+            }
         })
     }
     
@@ -47,6 +50,9 @@ class InterfaceController: WKInterfaceController {
         
         WKInterfaceController.openParentApplication(info, reply: { (reply, error) -> Void in
             println("reply \(reply) error \(error)")
+            if reply != nil {
+                self.updateLabel(reply as! [String : String])
+            }
         })
     }
     
@@ -56,8 +62,16 @@ class InterfaceController: WKInterfaceController {
         
         WKInterfaceController.openParentApplication(info, reply: { (reply, error) -> Void in
             println("reply \(reply) error \(error)")
+            if reply != nil {
+                self.updateLabel(reply as! [String : String])
+            }
         })
         
+    }
+    
+    func updateLabel (songDictionary : [String : String]) {
+        let songName = songDictionary["CurrentSong"]
+        self.songTitleLabel.setText(songName)
     }
 
 }

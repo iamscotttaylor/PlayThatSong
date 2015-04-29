@@ -203,6 +203,9 @@ class ViewController: UIViewController {
                 
             }
             
+            let currentSongDictionary = ["CurrentSong" : currentSongName()]
+            watchKitInfo?.replyBlock(currentSongDictionary)
+            
             self.updateUI()
             
         }
